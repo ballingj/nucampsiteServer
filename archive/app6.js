@@ -5,8 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);  //this second parenthesis is used to pass parameter to a returned value of the require method; the returned value is a function
-const passport = require('passport');
-const authenticate = require('./authenticate');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -47,21 +45,25 @@ app.use(session({
   store: new FileStore()
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 function auth(req, res, next) {
-  console.log(`req user value is: `, req.user);
+  //console.log(`req headers value is: `, req.headers);
+  console.log(`req session value is: `, req.session);
   
-  if (!req.user) {
+  if (!req.session.user) {
     const err = new Error('You are not authenticated!');
     err.status = 401;
     return next(err);
   } else {
+    if (req.session.user === 'authenticated') {
       return next();
+    } else {
+        const err = new Error('You are not authenticated!');
+        err.status = 401;
+        return next(err);
+    }
   }
 }
 
