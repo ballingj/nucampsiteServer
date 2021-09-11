@@ -1,3 +1,4 @@
+//code up to week 3 Express Sessions Part 2
 const express = require('express');
 const User = require('../models/user');
 

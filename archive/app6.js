@@ -1,3 +1,4 @@
+//code up to week 3 Express Sessions Part 2
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -45,6 +46,7 @@ app.use(session({
   store: new FileStore()
 }));
 
+//These two middlewares were moved up before the "auth" to allow unauthenticated users access to these routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

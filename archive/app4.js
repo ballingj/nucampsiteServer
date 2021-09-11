@@ -1,3 +1,4 @@
+//code up to Week 3 Exercise Using Cookies
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -42,7 +43,7 @@ function auth(req, res, next) {
     //console.log(`authHeader value is: `, authHeader);
     if (!authHeader) {
       const err = new Error('You are not authenticated!');
-      res.setHeader('WWW-Authenticate', 'Basic');
+      res.setHeader('WWW-Authenticate', 'Basic');  //challenge the user
       err.status = 401;
       return next(err);
     }
@@ -51,11 +52,11 @@ function auth(req, res, next) {
     const user = auth[0];
     const pass = auth[1];
     if (user === 'admin' && pass === 'password') {
-        res.cookie('user', 'admin', {signed: true});
+        res.cookie('user', 'admin', {signed: true});  //part of express response object API: first argument "user" is the name of the cookie, second argument "admin" is the value assigned to the cookie name, third argument is optional parameter to set some object value
         return next(); // authorized
     } else {
         const err = new Error('You are not authenticated!');
-        res.setHeader('WWW-Authenticate', 'Basic');
+        res.setHeader('WWW-Authenticate', 'Basic');   //challenge the user
         err.status = 401;
         return next(err);
     }

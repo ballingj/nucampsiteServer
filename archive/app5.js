@@ -1,3 +1,4 @@
+//codes up to Week3 Express Session Part 1
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -42,7 +43,7 @@ app.use(session({
   secret: '12345-67890-09876-54321',
   saveUninitialized: false,   //new session is not saved ; no cookies
   resave: false,  //makes active session active
-  store: new FileStore()
+  store: new FileStore()  //create a new file store instead of saved in memory
 }));
 
 function auth(req, res, next) {

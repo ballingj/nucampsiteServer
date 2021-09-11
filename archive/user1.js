@@ -1,3 +1,4 @@
+//code created in week 3 Express Sessions Part 2
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
