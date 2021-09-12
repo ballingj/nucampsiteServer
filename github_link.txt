@@ -1,2 +1,0 @@
-# I created a branch week2-workshop just in case I start modifying the main branch
-https://github.com/ballingj/nucampsiteServer/tree/week2-workshop
