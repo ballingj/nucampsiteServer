@@ -1,3 +1,5 @@
 node_modules
 bin/server.key
 bin/server.cert
+archive/config1.js
+config.js
